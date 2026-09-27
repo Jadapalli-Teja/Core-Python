@@ -1,78 +1,63 @@
-Python Boolean (bool)
-1. What is a Boolean?
+# Python Boolean (`bool`)
 
-A Boolean represents a logical value.
+## 1. What is Boolean?
 
-Python has only two Boolean values:
-
-True
-False
-
-They represent:
-
-True → something is true
-False → something is false
+- Boolean represents a logical value.
+- Python has only two Boolean values:
+  - `True`
+  - `False`
+- The type of these values is `bool`.
 
 Example:
 
-is_student = True
-is_working = False
+```python
+a = True
+b = False
 
-Here:
-
-is_student → True
-is_working → False
-
-Boolean values are mainly used when Python needs to make a decision.
-
-2. Type of Boolean Values
-
-The type of True and False is bool.
-
-print(type(True))
-print(type(False))
+print(type(a))
+print(type(b))
 
 Output:
 
 <class 'bool'>
 <class 'bool'>
+2. True and False
 
-So:
-
-True  → bool
-False → bool
-3. True and False Are Python Keywords
-
-Boolean values must be written with a capital first letter:
-
-True
-False
-
-These are correct:
+Boolean values must start with a capital letter.
 
 x = True
 y = False
 
+print(x)
+print(y)
+
+Output:
+
+True
+False
+
 These are not Boolean values:
 
-x = true
-y = false
+true
+false
 
-Python treats true and false as names/variables, not Boolean values.
+Python treats them as names/variables rather than the Boolean values True and False.
 
-4. Boolean Values from Comparisons
+3. Boolean Values from Comparisons
 
 Comparison operators produce Boolean results.
-
-For example:
 
 print(10 > 5)
 print(10 < 5)
 print(10 == 10)
 print(10 != 10)
+print(10 >= 10)
+print(5 <= 3)
 
 Output:
 
+True
+False
 True
 False
 True
@@ -80,31 +65,13 @@ False
 
 Common comparison operators:
 
-Operator	Meaning
->	Greater than
-<	Less than
->=	Greater than or equal to
-<=	Less than or equal to
-==	Equal to
-!=	Not equal to
-
-Example:
-
-age = 21
-
-print(age >= 18)
-
-Output:
-
-True
-
-The expression:
-
-age >= 18
-
-produces a Boolean value.
-
-5. Boolean Expressions
+>    Greater than
+<    Less than
+>=   Greater than or equal to
+<=   Less than or equal to
+==   Equal to
+!=   Not equal to
+4. Boolean Expressions
 
 An expression that produces True or False is called a Boolean expression.
 
@@ -119,17 +86,9 @@ Output:
 
 True
 <class 'bool'>
+5. Boolean with if
 
-The important idea is:
-
-Expression
-    ↓
-True / False
-    ↓
-bool
-6. Boolean Values in if
-
-Boolean expressions are commonly used in conditional statements.
+Boolean expressions are commonly used in conditions.
 
 age = 21
 
@@ -140,21 +99,15 @@ Output:
 
 Adult
 
-Here:
+The expression:
 
 age >= 18
 
-produces:
+produces True, so the if block runs.
 
-True
+6. bool() Function
 
-Therefore the if block executes.
-
-7. The bool() Function
-
-Python provides the built-in bool() function.
-
-It converts a value into a Boolean value.
+bool() converts a value into a Boolean value.
 
 print(bool(1))
 print(bool(0))
@@ -164,32 +117,13 @@ Output:
 True
 False
 
-The result depends on whether Python considers the value truthy or falsy.
+The result depends on whether the value is truthy or falsy.
 
-8. Truthy and Falsy Values
+7. Truthy and Falsy Values
 
-Python does not require an expression to literally be True or False when used in a condition.
+Python evaluates many objects as either truthy or falsy when they are used in conditions.
 
-Many objects can be evaluated for their truth value.
-
-For example:
-
-if "Python":
-    print("This runs")
-
-A non-empty string is considered truthy.
-
-On the other hand:
-
-if "":
-    print("This will not run")
-
-An empty string is considered falsy.
-
-9. Common Falsy Values
-
-The following values are commonly considered falsy:
-
+Common falsy values
 False
 None
 0
@@ -201,14 +135,46 @@ None
 {}
 set()
 
-Examples:
+Example:
 
 print(bool(False))
 print(bool(None))
 print(bool(0))
 print(bool(0.0))
-print(bool(0j))
 print(bool(""))
+print(bool([]))
+print(bool({}))
+
+Output:
+
+False
+False
+False
+False
+False
+False
+False
+Common truthy values
+
+Non-zero numbers and non-empty objects are generally truthy.
+
+print(bool(1))
+print(bool(-10))
+print(bool("Python"))
+print(bool([1, 2]))
+print(bool({"name": "Teja"}))
+
+Output:
+
+True
+True
+True
+True
+True
+8. Empty vs Non-Empty Collections
+
+An empty collection is generally falsy.
+
 print(bool([]))
 print(bool(()))
 print(bool({}))
@@ -220,28 +186,12 @@ False
 False
 False
 False
-False
-False
-False
-False
-False
-False
 
-An important point:
+A non-empty collection is generally truthy.
 
-An empty collection is generally falsy, while a non-empty collection is generally truthy.
-
-10. Common Truthy Values
-
-Examples of truthy values:
-
-print(bool(1))
-print(bool(-1))
-print(bool(10.5))
-print(bool("Python"))
 print(bool([1, 2]))
 print(bool((1, 2)))
-print(bool({"name": "Teja"}))
+print(bool({"a": 1}))
 print(bool({1, 2}))
 
 Output:
@@ -250,56 +200,19 @@ True
 True
 True
 True
-True
-True
-True
-True
+9. Boolean Operators
 
-So a simple rule is:
+Python provides three main logical operators:
 
-Non-zero number → True
-Non-empty object → True
+and
+or
+not
 
-and commonly:
+They are commonly used to combine or reverse conditions.
 
-Zero → False
-Empty object → False
-None → False
-11. Boolean with not
+10. and Operator
 
-not reverses the truth value.
-
-print(not True)
-print(not False)
-
-Output:
-
-False
-True
-
-With other values:
-
-print(not 0)
-print(not 10)
-print(not "")
-print(not "Python")
-
-Output:
-
-True
-False
-True
-False
-
-So:
-
-not True  → False
-not False → True
-12. and Operator
-
-The and operator is used when both conditions need to be satisfied.
-
-For Boolean values:
+and is true when both conditions are true.
 
 print(True and True)
 print(True and False)
@@ -313,24 +226,19 @@ False
 False
 False
 
-The basic logical rule is:
-
-True and True → True
-Everything else → False
-
 Example:
 
 age = 21
-has_id = True
+marks = 75
 
-print(age >= 18 and has_id)
+print(age >= 18 and marks >= 60)
 
 Output:
 
 True
-13. or Operator
+11. or Operator
 
-The or operator is used when at least one condition can be true.
+or is true when at least one condition is true.
 
 print(True or True)
 print(True or False)
@@ -344,11 +252,42 @@ True
 True
 False
 
-The basic rule is:
+Example:
 
-False or False → False
-Everything else → True
-14. Truth Table
+age = 16
+has_permission = True
+
+print(age >= 18 or has_permission)
+
+Output:
+
+True
+12. not Operator
+
+not reverses the truth value.
+
+print(not True)
+print(not False)
+
+Output:
+
+False
+True
+
+It also works with other values:
+
+print(not 0)
+print(not 10)
+print(not "")
+print(not "Python")
+
+Output:
+
+True
+False
+True
+False
+13. Truth Tables
 and
 A	B	A and B
 True	True	True
@@ -365,21 +304,11 @@ not
 A	not A
 True	False
 False	True
-15. Important: and and or Don't Always Return True or False
+14. and and or Can Return Actual Values
 
-This is a very important Python behavior.
+An important Python behavior is that and and or do not always return True or False.
 
-Many beginners think:
-
-10 and 20
-
-must return:
-
-True
-
-But Python actually returns:
-
-20
+They can return one of their operands.
 
 Example:
 
@@ -391,7 +320,7 @@ Output:
 20
 0
 
-Similarly:
+With or:
 
 print(10 or 20)
 print(0 or 20)
@@ -401,68 +330,35 @@ Output:
 10
 20
 
-So and and or can return one of their operands, not necessarily a Boolean.
+The result depends on the truthiness of the operands.
 
-16. How and Works
+15. Short-Circuit Evaluation
 
-The and operator evaluates values from left to right.
+and and or use short-circuit evaluation.
 
-It stops as soon as it finds a falsy value.
+and
 
-Example:
+If the first value is falsy, Python does not need to evaluate the remaining expression.
 
-print(10 and 20)
+x = 0
 
-Both values are truthy.
+result = x and (10 / 0)
 
-Python reaches the last value and returns:
+print(result)
 
-20
-
-Another example:
-
-print(0 and 20)
-
-0 is falsy.
-
-Python stops immediately and returns:
+Output:
 
 0
 
-This behavior is called short-circuit evaluation.
+The division is never evaluated because x is already falsy.
 
-17. How or Works
+or
 
-or also evaluates from left to right.
-
-It stops as soon as it finds a truthy value.
-
-print(10 or 20)
-
-10 is truthy, so Python stops and returns:
-
-10
-
-But:
-
-print(0 or 20)
-
-0 is falsy, so Python checks the next value:
-
-20
-
-Therefore:
-
-20
-18. Short-Circuit Evaluation
-
-Short-circuiting means Python may stop evaluating an expression before checking every part.
-
-Example:
+If the first value is truthy, Python does not need to evaluate the remaining expression.
 
 x = 10
 
-result = x > 5 or x / 0
+result = x > 5 or (10 / 0)
 
 print(result)
 
@@ -470,41 +366,18 @@ Output:
 
 True
 
-Why doesn't this produce a division-by-zero error?
+The second expression is not evaluated.
 
-Because:
+16. Boolean Values in Arithmetic
 
-x > 5
-
-is already True.
-
-With or, Python doesn't need to evaluate the second part.
-
-This is called short-circuit evaluation.
-
-Similarly, with and, if the first value is falsy, Python can stop.
-
-19. Boolean Values in Arithmetic
-
-One of the most important Python-specific concepts is that bool is a subclass of int.
+In Python, bool is a subclass of int.
 
 Therefore:
 
-True
-
-behaves like:
-
-1
+True  → 1
+False → 0
 
 in arithmetic contexts.
-
-And:
-
-False
-
-behaves like:
-
-0
 
 Example:
 
@@ -517,10 +390,11 @@ Output:
 2
 1
 0
-20. More Boolean Arithmetic
+
+More examples:
+
 print(True * 5)
 print(False * 5)
-
 print(True - False)
 print(False - True)
 
@@ -530,14 +404,9 @@ Output:
 0
 1
 -1
+17. bool is a Subclass of int
 
-Conceptually:
-
-True  → 1
-False → 0
-21. bool is a Subclass of int
-
-We can verify this using isinstance():
+We can verify this using isinstance().
 
 print(isinstance(True, int))
 print(isinstance(False, int))
@@ -547,17 +416,7 @@ Output:
 True
 True
 
-This means:
-
-bool
-  ↓
-subclass of
-  ↓
-int
-
-But this does not mean that Boolean values have the type int.
-
-Their actual type is still bool.
+However, their actual types are different:
 
 print(type(True))
 print(type(1))
@@ -566,9 +425,18 @@ Output:
 
 <class 'bool'>
 <class 'int'>
-22. True == 1
 
-Because Boolean values behave like 1 and 0 in equality comparisons:
+So:
+
+bool → subclass of int
+
+but:
+
+True → bool
+1    → int
+18. True == 1 and False == 0
+
+Because Boolean values behave like 1 and 0 in comparisons:
 
 print(True == 1)
 print(False == 0)
@@ -578,133 +446,39 @@ Output:
 True
 True
 
-But:
+But they still have different types.
 
-print(type(True))
-print(type(1))
+19. Boolean with Strings
 
-still gives different types.
-
-So:
-
-True == 1
-
-is True because their values compare equal.
-
-But:
-
-type(True) != type(1)
-
-because their types are different.
-
-23. == vs is with Boolean Values
-
-Remember:
-
-== → compares values
-is → compares object identity
-
-For example:
-
-print(True == 1)
-
-Output:
-
-True
-
-But:
-
-print(True is 1)
-
-should not be used to compare Boolean and integer values.
-
-The important rule is:
-
-Use == when you want to compare values. Use is when you specifically need to test object identity.
-
-24. Boolean with Collections
-
-The truth value of collections depends mainly on whether they contain elements.
-
-Empty list
-print(bool([]))
-
-Output:
-
-False
-Non-empty list
-print(bool([1, 2, 3]))
-
-Output:
-
-True
-
-Similarly:
-
-print(bool({}))
-print(bool({"name": "Teja"}))
-
-Output:
-
-False
-True
-25. sum() with Boolean Values
-
-Because:
-
-True  → 1
-False → 0
-
-we can use Boolean values with sum().
-
-values = [True, False, True, True]
-
-print(sum(values))
-
-Output:
-
-3
-
-Why?
-
-True + False + True + True
-  1  +   0   +  1  +  1
-= 3
-
-This can be useful when counting how many conditions are true.
-
-26. Boolean Conversion of Strings
-
-Strings have an important truth-value rule:
-
-Empty string → False
-Non-empty string → True
-
-Example:
+An empty string is falsy:
 
 print(bool(""))
+
+Output:
+
+False
+
+A non-empty string is truthy:
+
 print(bool("Python"))
+
+Output:
+
+True
+
+An important example:
+
 print(bool("False"))
 
 Output:
 
-False
-True
 True
 
-Notice:
+Why?
 
-bool("False")
+Because "False" is a non-empty string. Python checks whether the string is empty, not what text it contains.
 
-is:
-
-True
-
-because "False" is a non-empty string.
-
-It does not matter that the text says "False".
-
-27. Boolean Conversion of Numbers
+20. Boolean with Numbers
 
 For numbers:
 
@@ -716,9 +490,8 @@ Examples:
 print(bool(0))
 print(bool(1))
 print(bool(-1))
-print(bool(100))
-print(bool(0.0))
-print(bool(2.5))
+print(bool(10.5))
+print(bool(-2.5))
 
 Output:
 
@@ -726,9 +499,8 @@ False
 True
 True
 True
-False
 True
-28. Boolean Conversion of None
+21. Boolean with None
 
 None represents the absence of a value.
 
@@ -741,41 +513,34 @@ print(bool(x))
 Output:
 
 False
-29. Boolean Expressions with Multiple Conditions
+22. sum() with Boolean Values
 
-We can combine multiple conditions.
+Because:
 
-age = 21
-marks = 75
+True  → 1
+False → 0
 
-result = age >= 18 and marks >= 60
+we can use sum() with Boolean values.
 
-print(result)
+values = [True, False, True, True]
 
-Output:
-
-True
-
-Both conditions are true.
-
-Another example:
-
-age = 16
-has_permission = True
-
-result = age >= 18 or has_permission
-
-print(result)
+print(sum(values))
 
 Output:
 
-True
+3
 
-At least one condition is true.
+Because:
 
-30. Chained Comparisons
+True + False + True + True
+  1  +   0   +  1  +  1
+= 3
 
-Python allows us to write comparisons in a clean way.
+This can be useful for counting how many conditions are true.
+
+23. Chained Comparisons
+
+Python allows multiple comparisons to be written together.
 
 Instead of:
 
@@ -794,12 +559,9 @@ print(18 <= age <= 60)
 Output:
 
 True
+24. Boolean Values with while
 
-Python evaluates this as a chained comparison.
-
-31. Boolean Values and while
-
-Boolean expressions are also commonly used with while.
+Boolean expressions are also used with loops.
 
 count = 1
 
@@ -817,138 +579,97 @@ The condition:
 
 count <= 3
 
-keeps producing True or False.
+produces either True or False.
 
-32. Boolean Objects are Immutable
+25. Boolean Objects are Immutable
 
-bool objects are immutable.
+Boolean objects are immutable.
 
-There are only two Boolean values:
+Python has only two Boolean values:
 
 True
 False
 
-You cannot modify the True object itself.
-
-When a Boolean variable changes:
+If we write:
 
 x = True
 x = False
 
-the variable is simply made to refer to another Boolean object.
+we are not changing the True object.
 
-33. Boolean and Identity
+We are simply making x refer to False.
 
-Python has Boolean singleton objects:
+26. Boolean Identity
 
-True
-False
+True and False are singleton Boolean objects.
 
-Therefore, when specifically checking whether something is the Boolean singleton True or False, is can be appropriate:
+When we specifically want to check whether a value is the Boolean object True, is can be used:
 
 value = True
 
 print(value is True)
 
-# Output:
-# True
-
-For ordinary truth testing, however, prefer:
-
-if value:
-    ...
-
-rather than unnecessarily comparing with True.
-
-34. Common Mistakes
-Mistake 1: Using lowercase true
-x = true
-
-This is not Python's Boolean value.
-
-Use:
-
-x = True
-Mistake 2: Thinking "False" is false
-print(bool("False"))
-
 Output:
 
 True
 
-Because the string is not empty.
+For normal conditions, however, simply use:
 
-Mistake 3: Thinking 10 and 20 returns True
-print(10 and 20)
-
-Output:
-
-20
-
-and and or can return operands.
-
-Mistake 4: Using is for normal value comparison
-
-Use:
-
-x == y
-
-when comparing values.
-
-Use:
-
-x is y
-
-when checking object identity.
-
-35. Important Points
+if value:
+    print("True")
+27. Important Points
 bool represents logical values.
-Python has exactly two Boolean values: True and False.
+Python has two Boolean values: True and False.
 The type of both is bool.
-Comparisons normally produce Boolean results.
-bool() converts objects to their truth value.
-0, 0.0, 0j, "", empty collections, None, and False are falsy.
-Most non-zero and non-empty values are truthy.
-not reverses a truth value.
-and requires both sides to be truthy when used as a logical condition.
-or succeeds when at least one side is truthy.
-and and or can return actual operands rather than True/False.
+Comparison operators produce Boolean values.
+bool() converts values to their truth value.
+Zero, empty collections, empty strings, None, and False are commonly falsy.
+Non-zero and non-empty values are generally truthy.
+and, or, and not are logical operators.
 and and or use short-circuit evaluation.
+and and or can return actual operands.
 bool is a subclass of int.
 True behaves like 1 and False behaves like 0 in arithmetic.
 True + True gives 2.
 True == 1 is True.
 type(True) is bool, not int.
-Boolean values are immutable.
-Boolean values are heavily used in if, while, comparisons, and logical expressions.
-sum() can be used with Boolean values to count True values.
+Boolean objects are immutable.
+Boolean values are commonly used with if and while.
+sum() can be used to count True values.
 Quick Revision
 bool
 │
 ├── True
 └── False
+      │
+      ↓
+Comparison results
+      │
+      ↓
+   bool()
 
-Comparison
-    ↓
-True / False
+Falsy:
+0, 0.0, 0j, "", [], (), {}, set(), None, False
 
-bool(value)
-    ↓
-Truth value
+Truthy:
+Non-zero values
+Non-empty objects
 
-0 / "" / [] / {} / None
-    ↓
-False
-
-Non-zero / non-empty values
-    ↓
-True
-
-and → logical AND + short-circuit
-or  → logical OR + short-circuit
-not → reverses truth value
+Logical operators:
+and
+or
+not
 
 True  → 1
 False → 0
 
 bool → subclass of int
+
+True + True → 2
+True == 1   → True
+
+and / or
+   ↓
+Short-circuit evaluation
+   ↓
+Can return operands
