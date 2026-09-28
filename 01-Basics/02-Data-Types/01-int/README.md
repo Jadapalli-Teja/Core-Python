@@ -1,19 +1,35 @@
-1. What is an Integer?
+# Python Integer (`int`)
 
-An integer (int) is a whole number without a decimal part.
+## 1. What is an Integer?
 
-It can be:
+- An integer represents a whole number without a decimal/fractional part.
+- Integers can be positive, negative, or zero.
+- The type of an integer object is `int`.
 
-Positive → 10, 25, 100
-Negative → -10, -25
-Zero → 0
+Examples:
+
+```python
 age = 21
+marks = 95
 temperature = -5
 count = 0
 
-The type of all these values is int.
+print(type(age))
+print(type(temperature))
 
-2. Creating Integer Objects
+Output:
+
+<class 'int'>
+<class 'int'>
+
+Examples of integers:
+
+10
+-10
+0
+100
+-250
+2. Creating Integer Values
 
 We can create an integer simply by assigning a whole number to a variable.
 
@@ -31,22 +47,27 @@ Output:
 95
 -500
 
-We don't need to write:
-
-int age = 21
-
-Python determines the type automatically.
+Python automatically determines that these values are integers.
 
 3. Integer Literals
 
-Python allows integers to be written in different number systems.
+A number written directly in Python code is called a literal.
+
+For example:
+
+x = 100
+
+Here, 100 is an integer literal.
+
+Python supports different ways of writing integer literals.
 
 Decimal
 
-This is the normal number system we use.
+This is the normal number system.
 
-num = 25
-print(num)
+x = 25
+
+print(x)
 
 # Output:
 # 25
@@ -54,24 +75,23 @@ Binary
 
 Binary uses only 0 and 1.
 
-We write binary numbers using 0b or 0B.
+Python uses 0b or 0B before a binary number.
 
-num = 0b1010
-print(num)
+x = 0b1010
+
+print(x)
 
 # Output:
 # 10
-
-0b1010 means decimal 10.
-
 Octal
 
 Octal uses digits from 0 to 7.
 
-We write octal numbers using 0o or 0O.
+Python uses 0o or 0O.
 
-num = 0o17
-print(num)
+x = 0o17
+
+print(x)
 
 # Output:
 # 15
@@ -79,12 +99,14 @@ Hexadecimal
 
 Hexadecimal uses:
 
-0-9 and A-F
+0 - 9
+A - F
 
-We write hexadecimal numbers using 0x or 0X.
+Python uses 0x or 0X.
 
-num = 0x1A
-print(num)
+x = 0x1A
+
+print(x)
 
 # Output:
 # 26
@@ -95,11 +117,11 @@ So:
 0o17   → 15
 0x1A   → 26
 
-The value is stored as an integer; these are simply different ways of writing integer literals.
+These are different representations of integer values.
 
-4. Underscores in Integers
+4. Underscores in Integer Literals
 
-Python allows _ inside large numbers to make them easier to read.
+Python allows underscores inside large numbers to make them easier to read.
 
 salary = 1_00_000
 population = 1_40_00_000
@@ -107,36 +129,34 @@ population = 1_40_00_000
 print(salary)
 print(population)
 
-# Output:
-# 100000
-# 14000000
-
-The underscore has no effect on the value.
+Output:
 
 100000
+14000000
 
-and
+The underscore does not change the value.
 
+100000
 1_00_000
 
 represent the same integer value.
 
-5. Python Integers Can Be Very Large
+5. Positive, Negative and Zero
 
-Python integers are not restricted to a fixed size like some other programming languages.
+An integer can be:
 
-num = 999999999999999999999999999999999999
+Positive
+x = 25
+Negative
+x = -25
+Zero
+x = 0
 
-print(num)
+All three are of type int.
 
-# Output:
-# 999999999999999999999999999999999999
+6. Integer Arithmetic
 
-Python can automatically handle large integers, limited mainly by available memory.
-
-6. Arithmetic Operations with Integers
-
-Integers can be used with arithmetic operators.
+Integers support normal arithmetic operations.
 
 a = 10
 b = 3
@@ -159,82 +179,403 @@ Output:
 1
 1000
 
-Important:
+Important operators:
 
-/ → normal division → returns float
-// → floor division
-% → remainder
-** → power
++   Addition
+-   Subtraction
+*   Multiplication
+/   Division
+//  Floor Division
+%   Modulus / Remainder
+**  Exponentiation
+7. / Always Produces a Float
 
-For example:
+Even when both operands are integers, / produces a float.
 
-10 // 3
+a = 10
+b = 2
+
+result = a / b
+
+print(result)
+print(type(result))
+
+Output:
+
+5.0
+<class 'float'>
+
+So:
+
+10 / 2 → 5.0 → float
+
+This is different from:
+
+10 // 2
+
+which gives:
+
+5 → int
+8. Floor Division //
+
+// performs floor division.
+
+print(10 // 3)
+
+# Output:
 # 3
 
-10 % 3
+For positive numbers:
+
+10 / 3  → 3.333...
+10 // 3 → 3
+
+For negative numbers, floor division goes toward negative infinity.
+
+print(-10 // 3)
+
+# Output:
+# -4
+
+This is important because it is not simply truncation toward zero.
+
+9. Modulus %
+
+The % operator returns the remainder.
+
+print(10 % 3)
+
+# Output:
 # 1
-7. Converting Other Values to Integer
 
-We can use the int() function to convert certain values into integers.
+Because:
 
-a = int(10.8)
-b = int("25")
+10 = 3 × 3 + 1
 
-print(a)
-print(b)
+So the remainder is 1.
+
+The modulus operator is commonly used to check whether a number is divisible by another number.
+
+print(10 % 2)
+
+# Output:
+# 0
+
+If the remainder is 0, the number is divisible by 2.
+
+10. Exponentiation **
+
+The ** operator is used for powers.
+
+print(2 ** 3)
+
+# Output:
+# 8
+
+Because:
+
+2³ = 2 × 2 × 2 = 8
+
+Another example:
+
+print(5 ** 2)
+
+# Output:
+# 25
+11. Integer and Float Together
+
+Python allows integers and floats to participate in the same arithmetic expression.
+
+a = 10
+b = 2.5
+
+result = a + b
+
+print(result)
+print(type(result))
+
+Output:
+
+12.5
+<class 'float'>
+
+Generally, when an integer is combined with a float in arithmetic, the result is a float.
+
+int + float → float
+int * float → float
+12. Converting to Integer Using int()
+
+The int() function can convert suitable values into integers.
+
+Float to Integer
+x = int(10.8)
+
+print(x)
 
 # Output:
 # 10
-# 25
 
-Notice:
+int() does not round the value.
 
-int(10.8)
+It removes the fractional part toward zero.
 
-does not round the number.
-
-It removes the decimal part.
-
-10.8 → 10
-10.9 → 10
+10.8  → 10
+10.2  → 10
 -10.8 → -10
-8. Checking Whether a Value is an Integer
+String to Integer
+x = int("25")
 
-We can use type():
+print(x)
+print(type(x))
 
-num = 25
+Output:
 
-print(type(num))
+25
+<class 'int'>
+
+The string must contain a valid integer representation.
+
+13. Converting Binary, Octal and Hexadecimal Strings
+
+int() can also convert strings using a specified base.
+
+print(int("1010", 2))
+print(int("17", 8))
+print(int("1A", 16))
+
+Output:
+
+10
+15
+26
+
+Here:
+
+2  → binary
+8  → octal
+16 → hexadecimal
+14. Python Integers Can Be Very Large
+
+Python integers can represent very large numbers.
+
+x = 999999999999999999999999999999999999
+
+print(x)
+
+Python does not have the same fixed integer-size limitation that languages using fixed-width integer types commonly have.
+
+The practical limit is mainly the memory available to the Python process.
+
+15. Checking the Type
+
+We can use type() to check the type of an integer.
+
+x = 100
+
+print(type(x))
 
 # Output:
 # <class 'int'>
 
-We can also use isinstance():
+We can also use isinstance().
 
-num = 25
+x = 100
 
-print(isinstance(num, int))
+print(isinstance(x, int))
 
 # Output:
 # True
+16. Integers Are Immutable
 
-isinstance() is useful when we want to check whether an object belongs to a particular type or class.
+int objects are immutable.
 
-9. Important Points About int
+This means an existing integer object cannot be changed.
+
+For example:
+
+x = 10
+
+x = x + 5
+
+print(x)
+
+# Output:
+# 15
+
+It may look like the value 10 was changed to 15, but Python actually creates/uses an integer object representing 15 and makes x refer to it.
+
+The original integer object representing 10 is not modified.
+
+This is an important difference between immutable types and mutable types such as lists.
+
+17. Integer Variables Can Be Reassigned
+
+Although integer objects are immutable, a variable can be assigned a different integer.
+
+x = 10
+x = 20
+
+print(x)
+
+# Output:
+# 20
+
+Here the variable x changes what it refers to.
+
+The integer object itself is not modified.
+
+18. Boolean and Integer Relationship
+
+In Python, bool is a subclass of int.
+
+Therefore:
+
+print(isinstance(True, int))
+print(isinstance(False, int))
+
+Output:
+
+True
+True
+
+Boolean values behave like integers in some arithmetic situations:
+
+print(True + True)
+print(True + False)
+
+Output:
+
+2
+1
+
+Conceptually:
+
+True  → 1
+False → 0
+
+But their types are still different:
+
+print(type(True))
+print(type(1))
+
+Output:
+
+<class 'bool'>
+<class 'int'>
+19. Integers are Hashable
+
+Integers are hashable, which means they can be used as:
+
+dictionary keys
+elements of a set
+
+Example:
+
+student_marks = {
+    101: 85,
+    102: 90
+}
+
+print(student_marks[101])
+
+# Output:
+# 85
+
+Here the integers 101 and 102 are used as dictionary keys.
+
+We can also use integers in a set:
+
+numbers = {10, 20, 30}
+
+print(numbers)
+
+# Output:
+# {10, 20, 30}
+20. Comparing Integers
+
+Integers can be compared using comparison operators.
+
+a = 10
+b = 20
+
+print(a == b)
+print(a != b)
+print(a < b)
+print(a > b)
+print(a <= b)
+print(a >= b)
+
+Output:
+
+False
+True
+True
+False
+True
+False
+
+Comparison expressions produce Boolean values.
+
+int comparison
+      ↓
+True / False
+      ↓
+bool
+21. Integer Objects and id()
+
+An integer is an object, so it has an identity.
+
+We can use id() to get its identity.
+
+x = 100
+
+print(id(x))
+
+The exact number returned by id() can vary between executions and Python implementations.
+
+The important concept is that x refers to an integer object.
+
+22. Important Points
 int represents whole numbers.
 Integers can be positive, negative, or zero.
-Python integers can grow very large.
-/ produces a float, even when both operands are integers.
+Python supports decimal, binary, octal, and hexadecimal integer literals.
+_ can be used to improve the readability of large integer literals.
+/ returns a float.
 // performs floor division.
-% gives the remainder.
-** is used for exponentiation.
+% returns the remainder.
+** performs exponentiation.
 int() can convert suitable values to integers.
-Binary, octal, and hexadecimal literals are still represented as integers.
-Simple way to remember
+Converting a float with int() truncates toward zero; it does not round.
+Python integers can represent very large values.
+Integer objects are immutable.
+Variables can still be reassigned to another integer.
+bool is a subclass of int.
+Integers are hashable.
+Integers can be used as dictionary keys and set elements.
+type() and isinstance() can be used to check integer types.
+Quick Revision
 int
- ↓
-Whole numbers
- ↓
-10, -10, 0, 100
- ↓
-Can be used for calculations
+│
+├── Whole numbers
+│   ├── Positive → 10
+│   ├── Negative → -10
+│   └── Zero → 0
+│
+├── Number systems
+│   ├── Decimal → 25
+│   ├── Binary → 0b1010
+│   ├── Octal → 0o17
+│   └── Hexadecimal → 0x1A
+│
+├── Arithmetic
+│   ├── +  Addition
+│   ├── -  Subtraction
+│   ├── *  Multiplication
+│   ├── /  Division → float
+│   ├── // Floor division
+│   ├── %  Remainder
+│   └── ** Power
+│
+├── Immutable
+├── Hashable
+└── bool is a subclass of int
