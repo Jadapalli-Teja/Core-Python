@@ -1,1042 +1,663 @@
-# Python Strings
+# Python String
 
-A **string** is a sequence of characters enclosed inside quotes.
+A **string (`str`)** is a built-in Python data type used to represent **text**.
 
----
-
-## 1. What is a String?
-
-A string is used to store text in Python.
+A string is a sequence of characters enclosed inside quotes.
 
 ```python
 name = "Teja"
-city = "Nellore"
 
-Here:
+print(name)
 
-"Teja" → string
-"Nellore" → string
+# Output:
+# Teja
+```
 
-A string can contain:
+Strings can contain:
 
-Alphabets
-Numbers
-Spaces
-Special characters
-Symbols
-Unicode characters
-name = "Teja"
-age = "21"
-symbol = "@"
-message = "Hello Python!"
+- Letters
+- Numbers
+- Symbols
+- Spaces
+- Special characters
+- Unicode characters
 
-Even though age contains digits, "21" is a string, not an integer.
+Example:
 
-print(type("21"))
+```python
+data = "Python 3.14 @2026"
 
-Output:
+print(data)
+```
 
-<class 'str'>
-2. Creating Strings
+---
 
-Python allows strings to be created using single or double quotes.
+# 1. Creating a String
 
-Single Quotes
+Strings can be created using:
+
+- Single quotes `' '`
+- Double quotes `" "`
+- Triple single quotes `''' '''`
+- Triple double quotes `""" """`
+
+Example:
+
+```python
 name = 'Teja'
-Double Quotes
-name = "Teja"
+city = "Hyderabad"
 
-Both create a string:
+print(name)
+print(city)
 
-print(type('Teja'))
-print(type("Teja"))
+# Output:
+# Teja
+# Hyderabad
+```
 
-Output:
+Single and double quotes create the same `str` type.
 
-<class 'str'>
-<class 'str'>
+```python
+print(type("Python"))
+print(type('Python'))
 
-Python does not treat single quotes and double quotes as different string types.
+# Output:
+# <class 'str'>
+# <class 'str'>
+```
 
-3. Multi-line Strings
+---
 
-Triple quotes can be used to create multi-line strings.
+# 2. Empty String
 
-message = """Hello
-Welcome to Python
-Learning Strings"""
-print(message)
+An empty string contains no characters.
 
-Output:
+```python
+data = ""
 
-Hello
-Welcome to Python
-Learning Strings
+print(data)
+print(len(data))
+print(type(data))
 
-You can use either:
+# Output:
+#
+# 0
+# <class 'str'>
+```
 
-""" """
+An empty string is still a string.
 
-or:
+---
 
-''' '''
-4. Empty Strings
+# 3. String with Numbers
 
-A string can contain zero characters.
+Numbers inside quotes are treated as characters, not numbers.
 
-name = ""
+```python
+a = "123"
 
-The length of an empty string is 0.
+print(a)
+print(type(a))
 
-print(len(name))
+# Output:
+# 123
+# <class 'str'>
+```
 
-Output:
+Compare:
 
-0
-
-An empty string is also considered False in a Boolean context.
-
-print(bool(""))
-
-Output:
-
-False
-5. Strings Can Contain Numbers
-
-A string can contain numeric characters, but that does not make it an integer.
-
-a = 100
-b = "100"
+```python
+a = 123
+b = "123"
 
 print(type(a))
 print(type(b))
 
-Output:
+# Output:
+# <class 'int'>
+# <class 'str'>
+```
 
-<class 'int'>
-<class 'str'>
+So:
 
-This difference is important.
+```text
+123  → integer
+"123" → string
+```
 
-print(100 + 200)
+---
 
-Output:
-
-300
-
-But:
-
-print("100" + "200")
-
-Output:
-
-100200
-
-The second operation joins two strings together.
-
-6. Escape Sequences
-
-Escape sequences are special combinations beginning with \.
-
-New Line - \n
-print("Hello\nPython")
-
-Output:
-
-Hello
-Python
-Tab - \t
-print("Hello\tPython")
-
-Output:
-
-Hello    Python
-Backslash - \\
-print("C:\\Users\\Teja")
-
-Output:
-
-C:\Users\Teja
-Single Quote - \'
-print('It\'s Python')
-
-Output:
-
-It's Python
-Double Quote - \"
-print("He said \"Hello\"")
-
-Output:
-
-He said "Hello"
-7. Raw Strings
-
-A raw string treats backslashes more literally.
-
-An r is placed before the string.
-
-path = r"C:\Users\Teja\Python"
-
-print(path)
-
-Output:
-
-C:\Users\Teja\Python
-
-Raw strings are useful when working with:
-
-Windows file paths
-Regular expressions
-8. Strings Are Sequences
+# 4. Strings Are Sequences
 
 A string is a sequence of characters.
 
-For example:
+Example:
 
+```python
 word = "Python"
+```
 
 Conceptually:
 
+```text
 P   y   t   h   o   n
 0   1   2   3   4   5
+```
 
-Each character has a position called an index.
+Each character has a position called an **index**.
 
-Python indexing starts from 0.
+This is why we can use:
 
-Therefore:
+- Indexing
+- Slicing
+- Iteration
+- Membership testing
 
-print(word[0])
-print(word[2])
-print(word[5])
+---
 
-Output:
+# 5. String Indexing
 
-P
-t
-n
-9. Positive Indexing
+Indexing starts from `0`.
 
-Positive indexes start from 0 and move from left to right.
-
-String:    P    y    t    h    o    n
-Index:     0    1    2    3    4    5
-
-Example:
-
+```python
 word = "Python"
 
 print(word[0])
 print(word[1])
-print(word[3])
+print(word[2])
 
-Output:
+# Output:
+# P
+# y
+# t
+```
 
-P
-y
-h
-10. Negative Indexing
+Conceptually:
 
-Negative indexes start from -1 and move from right to left.
+```text
+Index:  0   1   2   3   4   5
+        ↓   ↓   ↓   ↓   ↓   ↓
+       P   y   t   h   o   n
+```
 
-String:     P    y    t    h    o    n
-Positive:   0    1    2    3    4    5
-Negative:  -6   -5   -4   -3   -2   -1
+---
 
-Example:
+# 6. Negative Indexing
 
+Strings support negative indexing.
+
+`-1` refers to the last character.
+
+```python
 word = "Python"
 
 print(word[-1])
 print(word[-2])
 print(word[-6])
 
-Output:
+# Output:
+# n
+# o
+# P
+```
 
-n
-o
-P
+Conceptually:
 
--1 is commonly used to access the last character.
+```text
+Positive:  0   1   2   3   4   5
+Negative: -6  -5  -4  -3  -2  -1
+           ↓   ↓   ↓   ↓   ↓   ↓
+           P   y   t   h   o   n
+```
 
-11. IndexError
+---
 
-If an index does not exist, Python raises IndexError.
+# 7. Index Out of Range
 
+If we access an index that does not exist, Python raises `IndexError`.
+
+```python
 word = "Python"
 
 print(word[10])
+```
 
-There is no index 10, so Python raises:
+Output:
 
+```text
 IndexError: string index out of range
+```
 
-The valid positive indexes are:
+---
 
-0 to len(string) - 1
+# 8. String Slicing
 
-For "Python":
+Slicing extracts a part of a string.
 
-len("Python") = 6
+Syntax:
 
-Last index = 6 - 1 = 5
-12. String Slicing
-
-Slicing is used to extract a part of a string.
-
-Syntax
+```python
 string[start:stop]
+```
 
-The start index is included, but the stop index is excluded.
+The `stop` index is excluded.
 
 Example:
 
+```python
 word = "Python"
 
 print(word[0:3])
 
-Output:
+# Output:
+# Pyt
+```
 
-Pyt
+Indexes:
 
-Indexes 0, 1, and 2 are included.
+```text
+P   y   t   h   o   n
+0   1   2   3   4   5
+↑       ↑
+start   stop
+```
 
-Index 3 is not included.
+`word[0:3]` includes indexes `0, 1, 2`.
 
-Slicing With Step
+---
 
-Syntax:
+# 9. Slicing with Start
 
-string[start:stop:step]
-
-Example:
-
+```python
 word = "Python"
 
-print(word[0:6:2])
+print(word[2:])
 
-Output:
-
-Pto
-
-Indexes used:
-
-0 → P
-2 → t
-4 → o
-Omitting Start
-word = "Python"
-
-print(word[:3])
-
-Output:
-
-Pyt
+# Output:
+# thon
+```
 
 This means:
 
-word[0:3]
-Omitting Stop
-print(word[2:])
+```text
+start = 2
+stop = end
+```
 
-Output:
+---
 
-thon
-Copying the Whole String
-print(word[:])
+# 10. Slicing with Stop
 
-Output:
+```python
+word = "Python"
 
-Python
-13. Reverse a String
+print(word[:4])
 
-A string can be reversed using slicing.
+# Output:
+# Pyth
+```
 
+This means:
+
+```text
+start = beginning
+stop = 4
+```
+
+---
+
+# 11. Slicing with Step
+
+Syntax:
+
+```python
+string[start:stop:step]
+```
+
+Example:
+
+```python
+word = "Python"
+
+print(word[::2])
+
+# Output:
+# Pto
+```
+
+Characters at every second position are selected.
+
+---
+
+# 12. Reverse a String Using Slicing
+
+A string can be reversed using:
+
+```python
+[::-1]
+```
+
+Example:
+
+```python
 word = "Python"
 
 print(word[::-1])
 
-Output:
+# Output:
+# nohtyP
+```
 
-nohtyP
+---
 
-Here:
+# 13. String Immutability
 
-[::-1]
+A string is **immutable**.
 
-means that the step is -1, so Python moves from right to left.
+This means that once a string object is created, its characters cannot be changed directly.
 
-14. String Concatenation
+Example:
 
-Concatenation means joining strings together.
+```python
+word = "Python"
 
-The + operator is used.
+word[0] = "J"
+```
 
+This produces:
+
+```text
+TypeError: 'str' object does not support item assignment
+```
+
+You cannot directly change:
+
+```text
+Python
+  ↓
+Jython
+```
+
+using indexing.
+
+---
+
+# 14. Creating a New String
+
+Although strings cannot be modified directly, we can create a new string.
+
+```python
+word = "Python"
+
+word = "Jython"
+
+print(word)
+
+# Output:
+# Jython
+```
+
+The original string was not modified.
+
+The variable was simply made to refer to another string object.
+
+---
+
+# 15. String Concatenation
+
+Strings can be joined using `+`.
+
+```python
 first = "Hello"
-second = "Python"
+second = "World"
 
 result = first + " " + second
 
 print(result)
 
-Output:
+# Output:
+# Hello World
+```
 
-Hello Python
+This is called **string concatenation**.
 
-A string cannot be directly added to an integer.
+---
 
-age = 21
+# 16. String Repetition
 
-print("Age: " + age)
+The `*` operator can repeat a string.
 
-This gives a TypeError.
-
-Instead, convert the integer into a string:
-
-print("Age: " + str(age))
-
-Output:
-
-Age: 21
-15. String Repetition
-
-The * operator can repeat a string.
-
+```python
 word = "Hi"
 
 print(word * 3)
 
-Output:
-
-HiHiHi
+# Output:
+# HiHiHi
+```
 
 Another example:
 
+```python
 print("-" * 10)
 
-Output:
+# Output:
+# ----------
+```
 
-----------
-16. Membership Operators
+---
 
-The in and not in operators check whether a character or substring exists inside a string.
+# 17. Membership Operators
 
-text = "Python Programming"
+Use `in` to check whether a substring or character exists.
 
-print("Python" in text)
-print("Java" in text)
-print("Java" not in text)
+```python
+word = "Python"
 
-Output:
+print("Py" in word)
+print("Java" in word)
 
-True
-False
-True
+# Output:
+# True
+# False
+```
 
-Example with a condition:
+Using `not in`:
 
-email = "teja@gmail.com"
+```python
+print("Java" not in word)
 
-if "@" in email:
-    print("Contains @")
+# Output:
+# True
+```
 
-Output:
+---
 
-Contains @
-17. len() Function
+# 18. len()
 
-The len() function returns the number of characters in a string.
+`len()` returns the number of characters in a string.
 
+```python
 word = "Python"
 
 print(len(word))
 
-Output:
+# Output:
+# 6
+```
 
-6
+Spaces are also characters.
 
-Spaces are also counted as characters.
+```python
+data = "Hello World"
 
-text = "Hello World"
+print(len(data))
 
-print(len(text))
+# Output:
+# 11
+```
 
-Output:
+There are:
 
-11
+```text
+5 letters + 1 space + 5 letters = 11
+```
 
-Because:
+---
 
-Hello  → 5
-Space  → 1
-World  → 5
+# 19. Strings Can Contain Spaces
 
-Total  → 11
-18. Strings Are Immutable
+Spaces are part of the string.
 
-One of the most important properties of strings is:
+```python
+name = "Teja Jadapalli"
 
-Strings are immutable.
+print(name)
+print(len(name))
+```
 
-Immutable means that once a string object is created, its individual characters cannot be changed.
+The space between the names is also counted.
 
-For example:
+---
 
-word = "Python"
+# 20. Escape Characters
 
-word[0] = "J"
+Python provides special escape sequences.
 
-This produces:
+Common ones:
 
-TypeError: 'str' object does not support item assignment
-
-You cannot directly change "Python" into "Jython" by modifying index 0.
-
-Instead, create a new string:
-
-word = "Python"
-
-word = "J" + word[1:]
-
-print(word)
-
-Output:
-
-Jython
-
-The original string was not modified.
-
-A new string was created and word was made to refer to it.
-
-19. String Methods
-
-Python provides many built-in methods for working with strings.
-
-Some important methods are:
-
-Method	Purpose
-lower()	Converts to lowercase
-upper()	Converts to uppercase
-capitalize()	Capitalizes first character
-title()	Capitalizes each word
-strip()	Removes leading/trailing whitespace
-replace()	Replaces part of a string
-split()	Splits a string into a list
-join()	Joins strings together
-find()	Finds the position of a substring
-index()	Finds the position of a substring
-count()	Counts occurrences
-startswith()	Checks the beginning
-endswith()	Checks the ending
-isalpha()	Checks alphabetic characters
-isdigit()	Checks digits
-isalnum()	Checks letters/numbers
-isspace()	Checks whitespace
-20. Changing Case
-lower()
-text = "Python"
-
-print(text.lower())
-
-Output:
-
-python
-upper()
-print(text.upper())
-
-Output:
-
-PYTHON
-capitalize()
-text = "python programming"
-
-print(text.capitalize())
-
-Output:
-
-Python programming
-title()
-print(text.title())
-
-Output:
-
-Python Programming
-21. Removing Whitespace
-strip()
-
-Removes whitespace from both ends.
-
-text = "   Python   "
-
-print(text.strip())
-
-Output:
-
-Python
-lstrip()
-
-Removes whitespace from the left side.
-
-print(text.lstrip())
-rstrip()
-
-Removes whitespace from the right side.
-
-print(text.rstrip())
-22. replace()
-
-The replace() method replaces part of a string.
-
-text = "I like Java"
-
-result = text.replace("Java", "Python")
-
-print(result)
-
-Output:
-
-I like Python
-
-The original string is not changed because strings are immutable.
-
-23. split()
-
-split() divides a string and returns a list.
-
-text = "Python is easy"
-
-words = text.split()
-
-print(words)
-
-Output:
-
-['Python', 'is', 'easy']
-
-You can also specify a separator.
-
-data = "apple,banana,mango"
-
-print(data.split(","))
-
-Output:
-
-['apple', 'banana', 'mango']
-24. join()
-
-join() joins multiple strings into one string.
-
-words = ["Python", "is", "easy"]
-
-result = " ".join(words)
-
-print(result)
-
-Output:
-
-Python is easy
-
-Another example:
-
-words = ["Python", "Java", "C"]
-
-print(", ".join(words))
-
-Output:
-
-Python, Java, C
-split() vs join()
-split() → String → List
-
-join()  → List of strings → String
-25. find() and index()
-
-Both can be used to find the position of a substring.
-
-text = "Python Programming"
-
-print(text.find("Python"))
-
-Output:
-
-0
-
-If the substring is not found:
-
-print(text.find("Java"))
-
-Output:
-
--1
-
-But index() behaves differently.
-
-print(text.index("Java"))
-
-It raises:
-
-ValueError
-Difference
-find()  → returns -1 if not found
-index() → raises ValueError if not found
-26. count()
-
-count() returns the number of occurrences of a substring.
-
-text = "banana"
-
-print(text.count("a"))
-
-Output:
-
-3
-27. startswith() and endswith()
-startswith()
-
-Checks whether a string starts with a particular value.
-
-text = "Python Programming"
-
-print(text.startswith("Python"))
-
-Output:
-
-True
-endswith()
-
-Checks whether a string ends with a particular value.
-
-print(text.endswith("Programming"))
-
-Output:
-
-True
-28. Character Checking Methods
-isalpha()
-
-Checks whether all characters are alphabetic.
-
-print("Python".isalpha())
-print("Python123".isalpha())
-
-Output:
-
-True
-False
-isdigit()
-
-Checks whether all characters are digits.
-
-print("12345".isdigit())
-print("123abc".isdigit())
-
-Output:
-
-True
-False
-isalnum()
-
-Checks whether all characters are alphabetic or numeric.
-
-print("Python123".isalnum())
-print("Python 123".isalnum())
-
-Output:
-
-True
-False
-
-The second string contains a space.
-
-isspace()
-
-Checks whether all characters are whitespace.
-
-print("   ".isspace())
-print("Python".isspace())
-
-Output:
-
-True
-False
-29. String Comparison
-
-Strings can be compared using:
-
-==
-!=
-<
->
-<=
->=
+| Escape | Meaning |
+|---|---|
+| `\n` | New line |
+| `\t` | Tab |
+| `\\` | Backslash |
+| `\'` | Single quote |
+| `\"` | Double quote |
+| `\b` | Backspace |
 
 Example:
 
-a = "apple"
-b = "apple"
+```python
+print("Hello\nWorld")
 
-print(a == b)
+# Output:
+# Hello
+# World
+```
 
-Output:
+---
 
-True
+# 21. Tab Escape
 
-Python compares strings based on their character ordering.
+```python
+print("Name:\tTeja")
 
-print("apple" < "banana")
+# Output:
+# Name:   Teja
+```
 
-Output:
+`\t` represents a tab.
 
-True
-30. String Conversion Using str()
+---
 
-The str() function converts a value into a string.
+# 22. Quotes Inside Strings
 
-age = 21
-price = 99.5
-value = True
+We can use different types of quotes.
 
-print(str(age))
-print(str(price))
-print(str(value))
+```python
+message = "I'm learning Python"
 
-Output:
+print(message)
 
-21
-99.5
-True
+# Output:
+# I'm learning Python
+```
 
-Check the type:
+Or:
 
-result = str(100)
+```python
+message = 'He said "Hello"'
 
-print(type(result))
+print(message)
 
-Output:
+# Output:
+# He said "Hello"
+```
 
-<class 'str'>
-31. String Formatting
+If necessary, escape the quote:
 
-f-strings provide a convenient way to insert values into strings.
+```python
+message = "He said \"Hello\""
 
-name = "Teja"
-age = 21
+print(message)
 
-print(f"My name is {name} and I am {age} years old.")
+# Output:
+# He said "Hello"
+```
 
-Output:
+---
 
-My name is Teja and I am 21 years old.
+# 23. Multiline Strings
 
-Expressions can also be used inside {}.
+Triple quotes can create multiline strings.
 
-a = 10
-b = 20
+```python
+message = """Hello
+Welcome to Python
+Learning strings"""
 
-print(f"Sum = {a + b}")
-
-Output:
-
-Sum = 30
-
-Methods can also be used:
-
-name = "teja"
-
-print(f"Name: {name.upper()}")
-
-Output:
-
-Name: TEJA
-32. Formatting Numbers in Strings
-
-f-strings can format numbers.
-
-price = 99.5678
-
-print(f"{price:.2f}")
+print(message)
+```
 
 Output:
 
-99.57
+```text
+Hello
+Welcome to Python
+Learning strings
+```
 
-.2f means that the number should be displayed with 2 digits after the decimal point.
+Triple quotes are also commonly used for docstrings.
 
-33. Iterating Through a String
+---
 
-Since a string is a sequence, we can loop through its characters.
+# 24. Raw Strings
 
-word = "Python"
+A raw string treats backslashes mostly as normal characters.
 
-for char in word:
-    print(char)
+Use `r` before the string.
 
-Output:
+```python
+path = r"C:\Users\Teja\Python"
 
-P
-y
-t
-h
-o
-n
+print(path)
 
-Each iteration gives one character.
+# Output:
+# C:\Users\Teja\Python
+```
 
-34. enumerate() With Strings
+Without a raw string, backslashes can introduce escape sequences.
 
-enumerate() can be used when we need both the index and character.
+Raw strings are especially useful for:
 
-word = "Python"
+- Windows paths
+- Regular expressions
+- Text containing many backslashes
 
-for index, char in enumerate(word):
-    print(index, char)
+---
 
-Output:
+# 25. String Methods
 
-0 P
-1 y
-2 t
-3 h
-4 o
-5 n
-35. Unicode Strings
+Python provides many useful methods for working with strings.
 
-Python strings support Unicode characters.
+Important methods include:
 
-Therefore, strings can contain characters from many languages and symbols.
-
-name = "Teja"
-language = "తెలుగు"
-emoji = "😀"
-
-print(name)
-print(language)
-print(emoji)
-
-Output:
-
-Teja
-తెలుగు
-😀
-36. ord() and chr()
-
-ord() returns the Unicode code point of a character.
-
-print(ord("A"))
-
-Output:
-
-65
-
-chr() converts a Unicode code point back into a character.
-
-print(chr(65))
-
-Output:
-
-A
-
-So:
-
-ord() → Character → Number
-
-chr() → Number → Character
-37. == vs is With Strings
-
-== checks whether two strings have the same value.
-
-a = "Python"
-b = "Python"
-
-print(a == b)
-
-Output:
-
-True
-
-is checks whether two variables refer to the same object.
-
-Therefore, when comparing string values, use:
-
-a == b
-
-rather than relying on:
-
-a is b
-
-is is an identity operator, not a general string-value comparison operator.
-
-38. Important Properties of Strings
-
-Python strings have the following important properties:
-
-str is the string data type.
-Strings are sequences of characters.
-Strings are ordered.
-Indexing starts from 0.
-Negative indexing starts from -1.
-Strings support slicing.
-Strings are immutable.
-Strings support iteration.
-Strings support membership testing.
-Strings support concatenation using +.
-Strings support repetition using *.
-Strings support Unicode characters.
-Python provides many useful string methods.
-39. Important Points to Remember
-String
-name = "Teja"
-Type
-type(name)
-Length
-len(name)
-Indexing
-name[0]
-Negative Indexing
-name[-1]
-Slicing
-name[1:3]
-Reverse
-name[::-1]
-Concatenation
-"Hello " + name
-Repetition
-"Hi " * 3
-Membership
-"e" in name
-Conversion
-str(100)
-Immutability
-# name[0] = "R"  → TypeError
-Quick Revision
-String
-   ↓
-Sequence of characters
-   ↓
-Created using quotes
-   ↓
-Supports indexing
-   ↓
-Supports negative indexing
-   ↓
-Supports slicing
-   ↓
-Supports + and *
-   ↓
-Supports in / not in
-   ↓
-Immutable
-   ↓
-Supports iteration
-   ↓
-Has many built-in methods
-   ↓
-Supports Unicode
-Most Important String Methods
+```text
 lower()
 upper()
 capitalize()
 title()
+swapcase()
 strip()
 lstrip()
 rstrip()
@@ -1048,7 +669,1225 @@ index()
 count()
 startswith()
 endswith()
-isalpha()
-isdigit()
-isalnum()
-isspace()
+```
+
+---
+
+# 26. lower()
+
+Converts characters to lowercase.
+
+```python
+text = "PYTHON"
+
+print(text.lower())
+
+# Output:
+# python
+```
+
+The original string is not changed because strings are immutable.
+
+---
+
+# 27. upper()
+
+Converts characters to uppercase.
+
+```python
+text = "python"
+
+print(text.upper())
+
+# Output:
+# PYTHON
+```
+
+---
+
+# 28. capitalize()
+
+Makes the first character uppercase and the remaining characters lowercase.
+
+```python
+text = "python programming"
+
+print(text.capitalize())
+
+# Output:
+# Python programming
+```
+
+---
+
+# 29. title()
+
+Capitalizes the first letter of each word.
+
+```python
+text = "python programming language"
+
+print(text.title())
+
+# Output:
+# Python Programming Language
+```
+
+---
+
+# 30. swapcase()
+
+Changes uppercase characters to lowercase and lowercase characters to uppercase.
+
+```python
+text = "PyThOn"
+
+print(text.swapcase())
+
+# Output:
+# pYtHoN
+```
+
+---
+
+# 31. strip()
+
+`strip()` removes whitespace from both ends.
+
+```python
+text = "   Python   "
+
+print(text.strip())
+
+# Output:
+# Python
+```
+
+It does not remove spaces in the middle.
+
+```python
+text = "   Python Programming   "
+
+print(text.strip())
+
+# Output:
+# Python Programming
+```
+
+---
+
+# 32. lstrip()
+
+Removes whitespace from the left side.
+
+```python
+text = "   Python"
+
+print(text.lstrip())
+
+# Output:
+# Python
+```
+
+---
+
+# 33. rstrip()
+
+Removes whitespace from the right side.
+
+```python
+text = "Python   "
+
+print(text.rstrip())
+
+# Output:
+# Python
+```
+
+---
+
+# 34. replace()
+
+`replace()` replaces part of a string.
+
+```python
+text = "I like Java"
+
+result = text.replace("Java", "Python")
+
+print(result)
+
+# Output:
+# I like Python
+```
+
+The original string remains unchanged.
+
+---
+
+# 35. split()
+
+`split()` divides a string into a list.
+
+```python
+text = "Python Java C"
+
+result = text.split()
+
+print(result)
+
+# Output:
+# ['Python', 'Java', 'C']
+```
+
+By default, whitespace is used as the separator.
+
+---
+
+# 36. split() with a Separator
+
+```python
+data = "Python,Java,C"
+
+result = data.split(",")
+
+print(result)
+
+# Output:
+# ['Python', 'Java', 'C']
+```
+
+---
+
+# 37. join()
+
+`join()` combines strings into one string.
+
+```python
+languages = ["Python", "Java", "C"]
+
+result = "-".join(languages)
+
+print(result)
+
+# Output:
+# Python-Java-C
+```
+
+Important:
+
+```python
+separator.join(iterable)
+```
+
+The elements being joined should be strings.
+
+---
+
+# 38. split() and join() Relationship
+
+`split()`:
+
+```text
+String → List
+```
+
+Example:
+
+```python
+"Python Java C".split()
+```
+
+gives:
+
+```python
+["Python", "Java", "C"]
+```
+
+`join()`:
+
+```text
+List of strings → String
+```
+
+Example:
+
+```python
+" ".join(["Python", "Java", "C"])
+```
+
+gives:
+
+```text
+Python Java C
+```
+
+---
+
+# 39. find()
+
+`find()` returns the index of the first occurrence.
+
+```python
+text = "Python Programming"
+
+print(text.find("Python"))
+
+# Output:
+# 0
+```
+
+If the substring is not found:
+
+```python
+print(text.find("Java"))
+
+# Output:
+# -1
+```
+
+---
+
+# 40. index()
+
+`index()` also returns the position of a substring.
+
+```python
+text = "Python Programming"
+
+print(text.index("Python"))
+
+# Output:
+# 0
+```
+
+But there is an important difference.
+
+If the substring does not exist:
+
+```python
+text.index("Java")
+```
+
+raises:
+
+```text
+ValueError: substring not found
+```
+
+### Difference
+
+```text
+find()  → returns -1
+index() → raises ValueError
+```
+
+---
+
+# 41. count()
+
+`count()` returns the number of occurrences.
+
+```python
+text = "banana"
+
+print(text.count("a"))
+
+# Output:
+# 3
+```
+
+Example:
+
+```python
+text = "Python Python"
+
+print(text.count("Python"))
+
+# Output:
+# 2
+```
+
+---
+
+# 42. startswith()
+
+Checks whether a string starts with a particular value.
+
+```python
+text = "Python Programming"
+
+print(text.startswith("Python"))
+
+# Output:
+# True
+```
+
+---
+
+# 43. endswith()
+
+Checks whether a string ends with a particular value.
+
+```python
+filename = "resume.pdf"
+
+print(filename.endswith(".pdf"))
+
+# Output:
+# True
+```
+
+This is useful for checking file extensions.
+
+---
+
+# 44. isalpha()
+
+Returns `True` if all characters are alphabetic.
+
+```python
+text = "Python"
+
+print(text.isalpha())
+
+# Output:
+# True
+```
+
+But:
+
+```python
+text = "Python123"
+
+print(text.isalpha())
+
+# Output:
+# False
+```
+
+Numbers are not alphabetic.
+
+---
+
+# 45. isdigit()
+
+Returns `True` if all characters are digits.
+
+```python
+text = "12345"
+
+print(text.isdigit())
+
+# Output:
+# True
+```
+
+But:
+
+```python
+text = "123abc"
+
+print(text.isdigit())
+
+# Output:
+# False
+```
+
+---
+
+# 46. isalnum()
+
+Returns `True` if all characters are alphabetic or numeric.
+
+```python
+print("Python123".isalnum())
+
+# Output:
+# True
+```
+
+But:
+
+```python
+print("Python 123".isalnum())
+
+# Output:
+# False
+```
+
+The space is not alphanumeric.
+
+---
+
+# 47. isspace()
+
+Checks whether all characters are whitespace.
+
+```python
+print("   ".isspace())
+
+# Output:
+# True
+```
+
+But:
+
+```python
+print("Python".isspace())
+
+# Output:
+# False
+```
+
+---
+
+# 48. String Comparison
+
+Strings can be compared using:
+
+```text
+==
+!=
+<
+>
+<=
+>=
+```
+
+Example:
+
+```python
+a = "apple"
+b = "banana"
+
+print(a == b)
+print(a != b)
+
+# Output:
+# False
+# True
+```
+
+String ordering is based on character comparison using Unicode values.
+
+---
+
+# 49. String Equality
+
+`==` checks whether two strings contain the same characters.
+
+```python
+a = "Python"
+b = "Python"
+
+print(a == b)
+
+# Output:
+# True
+```
+
+---
+
+# 50. `==` vs `is` for Strings
+
+`==` checks values.
+
+`is` checks object identity.
+
+```python
+a = "Python"
+b = "Python"
+
+print(a == b)
+print(a is b)
+```
+
+Do not use `is` to compare string contents.
+
+Use:
+
+```python
+a == b
+```
+
+for value comparison.
+
+`is` is mainly used when checking object identity, such as:
+
+```python
+value is None
+```
+
+---
+
+# 51. Converting Other Types to String
+
+Use `str()` to convert a value to a string.
+
+```python
+age = 21
+
+text = str(age)
+
+print(text)
+print(type(text))
+
+# Output:
+# 21
+# <class 'str'>
+```
+
+Now `text` contains characters:
+
+```text
+"21"
+```
+
+not the integer `21`.
+
+---
+
+# 52. String and Integer Are Different
+
+This is invalid:
+
+```python
+age = 21
+
+print("Age: " + age)
+```
+
+because `str` and `int` cannot be directly concatenated using `+`.
+
+We can convert:
+
+```python
+age = 21
+
+print("Age: " + str(age))
+
+# Output:
+# Age: 21
+```
+
+Or use an f-string.
+
+---
+
+# 53. f-Strings
+
+F-strings provide a convenient way to insert variables into strings.
+
+```python
+name = "Teja"
+age = 21
+
+print(f"My name is {name} and I am {age} years old.")
+
+# Output:
+# My name is Teja and I am 21 years old.
+```
+
+Syntax:
+
+```python
+f"some text {variable}"
+```
+
+---
+
+# 54. Formatting Expressions in f-Strings
+
+We can also use expressions.
+
+```python
+a = 10
+b = 20
+
+print(f"Sum = {a + b}")
+
+# Output:
+# Sum = 30
+```
+
+---
+
+# 55. String Iteration
+
+A string is iterable.
+
+We can loop through each character.
+
+```python
+word = "Python"
+
+for char in word:
+    print(char)
+
+# Output:
+# P
+# y
+# t
+# h
+# o
+# n
+```
+
+---
+
+# 56. enumerate() with String
+
+`enumerate()` provides both index and character.
+
+```python
+word = "Python"
+
+for index, char in enumerate(word):
+    print(index, char)
+
+# Output:
+# 0 P
+# 1 y
+# 2 t
+# 3 h
+# 4 o
+# 5 n
+```
+
+---
+
+# 57. Strings and Unicode
+
+Python strings support Unicode.
+
+This means strings can contain characters from many languages and symbol systems.
+
+```python
+text = "Hello नमस्ते"
+
+print(text)
+```
+
+We can also store emojis:
+
+```python
+message = "Python 🐍"
+
+print(message)
+```
+
+Python 3 strings are Unicode strings by default.
+
+---
+
+# 58. ord()
+
+`ord()` returns the Unicode code point of a character.
+
+```python
+print(ord("A"))
+
+# Output:
+# 65
+```
+
+Another example:
+
+```python
+print(ord("a"))
+
+# Output:
+# 97
+```
+
+---
+
+# 59. chr()
+
+`chr()` converts a Unicode code point into a character.
+
+```python
+print(chr(65))
+
+# Output:
+# A
+```
+
+Therefore:
+
+```text
+ord() → character → number
+chr() → number → character
+```
+
+---
+
+# 60. String Immutability and Methods
+
+String methods do not change the original string.
+
+Example:
+
+```python
+text = "python"
+
+text.upper()
+
+print(text)
+
+# Output:
+# python
+```
+
+Why?
+
+Because `upper()` creates and returns a new string.
+
+Correct:
+
+```python
+text = text.upper()
+
+print(text)
+
+# Output:
+# PYTHON
+```
+
+---
+
+# 61. Important String Methods
+
+| Method | Purpose |
+|---|---|
+| `lower()` | Converts to lowercase |
+| `upper()` | Converts to uppercase |
+| `capitalize()` | Capitalizes first character |
+| `title()` | Capitalizes each word |
+| `swapcase()` | Swaps uppercase/lowercase |
+| `strip()` | Removes whitespace from both ends |
+| `lstrip()` | Removes left whitespace |
+| `rstrip()` | Removes right whitespace |
+| `replace()` | Replaces text |
+| `split()` | Splits string into list |
+| `join()` | Joins strings |
+| `find()` | Finds substring, returns `-1` if missing |
+| `index()` | Finds substring, raises error if missing |
+| `count()` | Counts occurrences |
+| `startswith()` | Checks beginning |
+| `endswith()` | Checks ending |
+| `isalpha()` | Checks alphabetic characters |
+| `isdigit()` | Checks digits |
+| `isalnum()` | Checks letters/numbers |
+| `isspace()` | Checks whitespace |
+
+---
+
+# 62. Useful String Operators
+
+| Operator | Purpose |
+|---|---|
+| `+` | Concatenation |
+| `*` | Repetition |
+| `in` | Membership |
+| `not in` | Membership negation |
+| `==` | Equality |
+| `!=` | Inequality |
+| `<` | Less than |
+| `>` | Greater than |
+| `[]` | Indexing |
+| `[:]` | Slicing |
+
+---
+
+# 63. Common String Mistakes
+
+### Mistake 1: Trying to modify a string
+
+Wrong:
+
+```python
+text = "Python"
+text[0] = "J"
+```
+
+Strings are immutable.
+
+---
+
+### Mistake 2: Forgetting that indexing starts at 0
+
+```python
+text = "Python"
+
+print(text[0])
+```
+
+Output:
+
+```text
+P
+```
+
+not `y`.
+
+---
+
+### Mistake 3: Confusing `"123"` with `123`
+
+```text
+"123" → str
+123   → int
+```
+
+---
+
+### Mistake 4: Using `is` instead of `==`
+
+Use:
+
+```python
+a == b
+```
+
+when comparing string values.
+
+---
+
+### Mistake 5: Forgetting that `split()` returns a list
+
+```python
+text = "Python Java C"
+
+result = text.split()
+
+print(type(result))
+
+# Output:
+# <class 'list'>
+```
+
+---
+
+### Mistake 6: Forgetting that `join()` is called on the separator
+
+Correct:
+
+```python
+"-".join(["Python", "Java", "C"])
+```
+
+Not:
+
+```python
+["Python", "Java", "C"].join("-")
+```
+
+---
+
+# 64. String vs List
+
+Both strings and lists are sequences, but they are different.
+
+| Feature | String | List |
+|---|---|---|
+| Stores | Characters/text | Any objects |
+| Ordered | ✅ | ✅ |
+| Indexed | ✅ | ✅ |
+| Mutable | ❌ | ✅ |
+| Duplicates | ✅ | ✅ |
+| Slicing | ✅ | ✅ |
+| `append()` | ❌ | ✅ |
+| `replace()` | ✅ | ❌ |
+| Main use | Text | Collection of objects |
+
+Example:
+
+```python
+text = "Python"
+numbers = [10, 20, 30]
+```
+
+---
+
+# 65. String vs Tuple
+
+Both are immutable sequences.
+
+| Feature | String | Tuple |
+|---|---|---|
+| Main purpose | Text | Collection |
+| Elements | Characters | Any objects |
+| Mutable | ❌ | ❌ |
+| Indexed | ✅ | ✅ |
+| Slicing | ✅ | ✅ |
+| Duplicates | ✅ | ✅ |
+
+Example:
+
+```python
+text = "Python"
+data = (10, 20, 30)
+```
+
+---
+
+# 66. String Time Complexity
+
+For a string of length `n`:
+
+| Operation | Typical Complexity |
+|---|---:|
+| Index access | O(1) |
+| `len()` | O(1) |
+| Membership search | O(n) |
+| `find()` | O(n) typical/simple cases |
+| `count()` | O(n) |
+| Slicing | O(k) |
+| Concatenation | Depends on operation/size |
+| Iteration | O(n) |
+
+Because strings are immutable, operations that appear to modify a string generally create a **new string**.
+
+---
+
+# 67. Why String Concatenation Can Create New Objects
+
+Consider:
+
+```python
+a = "Hello"
+b = "World"
+
+c = a + b
+```
+
+Python creates a new string for the result.
+
+Conceptually:
+
+```text
+a ──> "Hello"
+
+b ──> "World"
+
+a + b
+   ↓
+new string
+   ↓
+"HelloWorld"
+```
+
+The original strings remain unchanged.
+
+For joining many strings, `"separator".join(...)` is generally preferred over repeatedly using `+` in a loop.
+
+---
+
+# 68. Practical Example: Username Validation
+
+```python
+username = "Teja123"
+
+if username.isalnum():
+    print("Valid username")
+else:
+    print("Invalid username")
+
+# Output:
+# Valid username
+```
+
+---
+
+# 69. Practical Example: Checking File Extension
+
+```python
+filename = "resume.pdf"
+
+if filename.endswith(".pdf"):
+    print("PDF file")
+else:
+    print("Not a PDF file")
+
+# Output:
+# PDF file
+```
+
+---
+
+# 70. Practical Example: Counting Characters
+
+```python
+text = "banana"
+
+print(text.count("a"))
+
+# Output:
+# 3
+```
+
+---
+
+# 71. Practical Example: Reverse a String
+
+```python
+text = "Python"
+
+reverse = text[::-1]
+
+print(reverse)
+
+# Output:
+# nohtyP
+```
+
+---
+
+# 72. Practical Example: Palindrome
+
+A palindrome reads the same forward and backward.
+
+```python
+text = "madam"
+
+if text == text[::-1]:
+    print("Palindrome")
+else:
+    print("Not Palindrome")
+
+# Output:
+# Palindrome
+```
+
+---
+
+# 73. Practical Example: Remove Extra Spaces
+
+```python
+text = "   Python Programming   "
+
+text = text.strip()
+
+print(text)
+
+# Output:
+# Python Programming
+```
+
+---
+
+# 74. Practical Example: Word Count
+
+```python
+text = "Python is easy to learn"
+
+words = text.split()
+
+print(len(words))
+
+# Output:
+# 5
+```
+
+Here:
+
+```python
+text.split()
+```
+
+produces:
+
+```python
+["Python", "is", "easy", "to", "learn"]
+```
+
+---
+
+# 75. Quick Revision
+
+```text
+String
+│
+├── Text data
+├── Sequence of characters
+├── Ordered
+├── Indexed
+├── Immutable
+├── Allows duplicate characters
+├── Supports positive indexing
+├── Supports negative indexing
+├── Supports slicing
+├── Iterable
+├── Supports membership testing
+├── Supports many built-in methods
+├── Supports Unicode
+└── Can be compared and formatted
+```
+
+Important examples:
+
+```python
+text = "Python"
+```
+
+Index:
+
+```python
+text[0]
+```
+
+Negative index:
+
+```python
+text[-1]
+```
+
+Slice:
+
+```python
+text[1:4]
+```
+
+Reverse:
+
+```python
+text[::-1]
+```
+
+Length:
+
+```python
+len(text)
+```
+
+Membership:
+
+```python
+"Py" in text
+```
+
+Concatenation:
+
+```python
+"Hello" + " World"
+```
+
+Repetition:
+
+```python
+"Hi" * 3
+```
+
+Conversion:
+
+```python
+str(123)
+```
+
+---
+
+# 76. One-Line Definition
+
+> **A string is an ordered and immutable sequence of Unicode characters used to represent text in Python.**
